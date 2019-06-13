@@ -1,0 +1,33 @@
+.textoJustificado {
+    text-align: center;
+}
+
+.navbar {
+    background-color: #5E5EFF;
+}
+
+.carousel-inner>img {
+    width: 10%;
+}
+
+a {
+    color: azure;
+}
+
+body {
+    background-color: #E3F2FD;
+    font-family: 'Arial', Times, serif;
+}
+
+.jumbotron {
+    background-color: #99D5FF;
+    color: white;
+}
+
+.navbar {
+    color: white;
+}
+
+.carousel-caption {
+    background-image: linear-gradient(to bottom, transparent, #5E5EFF);
+}
