@@ -51,7 +51,7 @@
                     <ul class="nav text-dark">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                                <img src="img/user.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                                <img src="img/user.png" width='30' height='30' class="d-inline-block align-top mr-2" alt="">
 
                                 <?php echo $_SESSION['nomeUser']; ?></a>
                             <div class="dropdown-menu">

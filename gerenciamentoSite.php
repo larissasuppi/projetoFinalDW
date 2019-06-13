@@ -15,31 +15,42 @@ if ($_SESSION['tipoConta'] != 'nivel1') {
         <br>
 
     </div>
-    <!--CRIAR NOVO USUARIO--> 
+    <!--CRIAR NOVO USUARIO-->
     <div class="row cadastro">
         <div class="col-md-12">
             <form class="form-group needs-validation justify-content-center" action="db/acoes.php" method="post">
-                <h2 class="text-left mb-5">Registrar novo usuario</h2>
-                <p>Usuario</p>
-                <input type="text" class="form-control" name="usuario" placeholder="Insira seu nome de usuario" required="">
+                <h2 class="text-left mb-3">Registrar novo usuario</h2>
 
-                <p>Nome de Perfil</p>
-                <input type="text" class="form-control" name="nome" placeholder="Insira seu nome completo" required="">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="usuario">Usuário: </label>
+                        <input type="text" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Seu usuário aqui!">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="nomeconta">Nome de Perfil: </label>
+                        <input type="text" name="nome" class="form-control" id="nomeconta" aria-describedby="emailHelp" placeholder="Seu Nome de Perfil!">
+                    </div>
+                </div>
 
-                <p>Senha</p>
-                <input type="password" class="form-control" name="senha" placeholder="Insira sua senha" required="">
-
-                <p>Tipo de Conta</p>
-                <select type="select" class="form-control" name="tipo" placeholder="Tipo de conta" required="">
-                    <option value="nivel1">Administrador</option>
-                    <option value="nivel2">Gerenciador de Noticias</option>
-                    <option value="nivel3">Gerenciador de Avisos</option>
-                </select>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="senha">Senha: </label>
+                        <input type="text" name="senha" class="form-control" id="senha" aria-describedby="emailHelp" placeholder="Insira a sua senha">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="senha">Tipo da conta: </label>
+                        <select type="select" class="form-control" name="tipo" placeholder="Tipo de conta" required="">
+                            <option value="nivel1">Administrador</option>
+                            <option value="nivel2">Gerenciador de Noticias</option>
+                            <option value="nivel3">Gerenciador de Avisos</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="botao text-center">
-                <button type="submit" class="btn btn-primary btn-block mb-3 mt-2" id="botao" name="cadatrarUsuario" class="btn">Cadastrar Usuario</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-3 mt-2" id="botao" name="cadatrarUsuario" class="btn">Cadastrar Usuario</button>
                 </div>
-                
+
             </form>
         </div>
     </div>
@@ -53,29 +64,41 @@ if ($_SESSION['tipoConta'] != 'nivel1') {
     ?>
 
     <div class="col-md-12">
-        <h2 class="text-left mb-5">Alterar Dados da empresa</h2>
+        <h2 class="text-left mb-3 mt-4">Alterar Dados da empresa</h2>
         <form enctype="multipart/form-data" class="form-group needs-validation justify-content-center" action="db/acoes.php" method="post">
             <div class="form-row">
-                <div class="form-group col-md-12">
-                    <p>Nome da Empresa</p>
+                <div class="form-group col-md-6">
+                    <p>Nome da Empresa:</p>
                     <input type="text" class="form-control" name="nome" value="<?php echo $mostraEmpresa->nome_empresa ?>">
-                    <p>Telefone para contato</p>
+                </div>
+                <div class="form-group col-md-6">
+                    <p>Telefone para contato:</p>
                     <input type="text" class="form-control" name="tel" value="<?php echo $mostraEmpresa->telefone ?>">
-                    <p>Email</p>
-                    <input type="text" class="form-control" name="email" value="<?php echo $mostraEmpresa->email ?>">
-                    <p>Logo</p>
-                    <?php echo "<img src='{$mostraEmpresa->logo}' width='30' height='30' class='d-inline-block align-top'>";?>
-                    <input type="file" class="form-control" name="imagem" value="" required="">
                 </div>
             </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <p>Email:</p>
+                    <input type="text" class="form-control" name="email" value="<?php echo $mostraEmpresa->email ?>">
+                </div>
+                <div class="form-group col-md-5">
+                    <p>Logo:</p>
+                    <input type="file" class="form-control" name="imagem" value="" required="">
+                </div>
+                <div class="form-group col-md-1">
+                    <?php echo "<img src='{$mostraEmpresa->logo}' width='85' height='85' class=' align-center'>"; ?>
+                </div>
 
-            <div class="botaoAlterarEmpresa text-center">
-            <button type="submit" class="btn btn-primary  btn-block mb-2" id="botao" name="alteraEmpresa" class="btn">Alterar dados da empresa</button>
             </div>
-           
-
-        </form>
     </div>
+
+    <div class="botaoAlterarEmpresa text-center mb-4">
+        <button type="submit" class="btn btn-primary  btn-block mb-2" id="botao" name="alteraEmpresa" class="btn">Alterar dados da empresa</button>
+    </div>
+
+
+    </form>
+</div>
 </div>
 
 

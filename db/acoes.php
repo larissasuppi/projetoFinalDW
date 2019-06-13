@@ -151,6 +151,7 @@ if (isset($_POST['alteraAviso'])) {
 
 //CADASTRO DE USUARIOS
 if (isset($_POST['cadatrarUsuario'])) {
+   
 
     $novo_usuario = array(
         ':usuario' => $_POST['usuario'],
@@ -158,6 +159,7 @@ if (isset($_POST['cadatrarUsuario'])) {
         ':senha' => $_POST['senha'],
         ':tipo' => $_POST['tipo']
     );
+
     $stmt = $pdo->prepare("INSERT INTO tb_usuario (login,nome,senha,tipo_conta)
         VALUES (:usuario,:nome,:senha,:tipo)");
     $stmt->execute($novo_usuario);

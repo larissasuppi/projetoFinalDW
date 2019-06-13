@@ -26,7 +26,12 @@
                                     <div class="carousel-item active">
                                         <img class="d-block w-100" <?php echo "src='{$mostraNoticia->img_noticia}' widht = '500px' height = '400px'" ?> alt="Primeiro slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <?php echo "<h5>{$mostraNoticia->titulo_noticia}</h5>" ?>
+                                            <?php echo "<h5>{$mostraNoticia->titulo_noticia}</h5>";
+                                            echo "<p>{$mostraNoticia->resumo_noticia}</p>";
+                                            echo "<form action='detalheNoticia.php' method='get' name='detalhes{$mostraNoticia->id_noticia}'>";
+                                            echo "<input type='hidden' name='idCliente' value='{$mostraNoticia->id_noticia}'>";
+                                            echo "<button class='btn text-center btn-light btn-sm' type='submit'>Mais Detalhes</button>";
+                                            echo "</form>"?>
                                         </div>
                                         </form>
 
@@ -37,7 +42,12 @@
                                     <div class="carousel-item ">
                                         <img class="d-block w-100 " <?php echo "src='{$mostraNoticia->img_noticia}' widht = '500px' height = '400px'" ?> alt="Primeiro slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <?php echo "<h5>{$mostraNoticia->titulo_noticia}</h5>" ?>
+                                            <?php echo "<h5>{$mostraNoticia->titulo_noticia}</h5>";
+                                            echo "<p>{$mostraNoticia->resumo_noticia}</p>";
+                                            echo "<form action='detalheNoticia.php' method='get' name='detalhes{$mostraNoticia->id_noticia}'>";
+                                            echo "<input type='hidden' name='idCliente' value='{$mostraNoticia->id_noticia}'>";
+                                            echo "<button class='btn text-center btn-light btn-sm' type='submit'>Mais Detalhes</button>";
+                                            echo "</form>"?>
                                         </div>
                                     </div>
                                 <?php
@@ -144,11 +154,11 @@
                                     echo '</div>';
                                     echo '<form action="gerenciamentoAviso.php" class="col-md-4 text-center" method="POST">';
                                     echo "<input type='hidden' name='idAviso' value='{$mostraAvisos->id_avisos}'>";
-                                    echo"<button class='btn btn-success alterar btn-sm mb-2' type='submit' name='editaAviso'><i class='fas fa-edit'></i>Alterar</button>";
+                                    echo"<button class='btn btn-success text-center btn-block alterar btn-sm mb-2' type='submit' name='editaAviso'><i class='fas fa-edit'></i>Alterar</button>";
                                     echo '</form>';
                                     echo '<form action="db/acoes.php" class="col-md-4 text-center" method="POST">';
                                     echo "<input type='hidden' name='idAviso' value='{$mostraAvisos->id_avisos}'>";
-                                    echo"<button class='btn btn-danger btn-sm mb-2' type='submit' name='deletaAviso'><i class='fas fa-edit'></i>Deletar</button>";
+                                    echo"<button class='btn btn-danger text-center btn-block btn-sm mb-2' type='submit' name='deletaAviso'><i class='fas fa-edit'></i>Deletar</button>";
                                     echo '</form>';
                                     echo '<div class="col-md-2">';
                                     echo '</div>';
