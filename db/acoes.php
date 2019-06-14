@@ -139,25 +139,7 @@ if (isset($_POST['alteraAviso'])) {
     }
 }
 
-//CADASTRO DE USUARIOS
-if (isset($_POST['cadatrarUsuario'])) {
 
-    $novo_usuario = array(
-        ':usuario' => $_POST['usuario'],
-        ':nome' => $_POST['nome'],
-        ':senha' => $_POST['senha'],
-        ':tipo' => $_POST['tipo']
-    );
-    $stmt = $pdo->prepare("INSERT INTO tb_usuario (login,nome,senha,tipo_conta)
-        VALUES (:usuario,:nome,:senha,:tipo)");
-    $stmt->execute($novo_usuario);
-
-    if ($stmt->rowCount() > 0) {
-        header('location: ../index.php');
-    } else {
-        echo "<br><br><br>ERRO novo!!!!!";
-    }
-}
 // ALTERA DADOS DA EMPRESA 
 if (isset($_POST['alteraEmpresa'])) {
 
@@ -182,22 +164,4 @@ if (isset($_POST['alteraEmpresa'])) {
     }
 }
 
-//ALTERA UM USUARIO
-if (isset($_POST['alterarUsuario'])) {
 
-    $alteraUsuario = array(':id' => $_POST['idUsuario'],
-        ':login' => $_POST['usuario'],
-        ':nome' => $_POST['nome'],
-        ':senha' => $_POST['senha'],
-        ':tipoConta' => $_POST['tipo']);
-
-    $stmt = $pdo->prepare("UPDATE `tb_usuario` SET `login`= :login,`nome`=:nome,`senha`=:senha,`tipo_conta`=:tipoConta WHERE id_usuario = :id");
-    $stmt->execute($alteraUsuario);
-
-    if ($stmt->rowCount() > 0) {
-        header('location: ../gerenciamentoSite.php');
-    } else {
-        echo "<br><br><br>ERRO novo!!!!!";
-    }
-}
-   

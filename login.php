@@ -15,16 +15,15 @@
 <body>
     <div class="login">
         <img src="img/logo_info.png" class="usuario" width="100" height="100" alt="">
-        <h1 class="text-center">LOGIN</h1>
-        <form method="POST" action="db/validaLoginBanco.php">
+        <form method="POST" action="db/validaLogin.php">
 
             <div class="form-group text-center mt-3">
                 <label for="exampleInputEmail1">Endereço de email</label>
-                <input type="text" name="usuario" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
+                <input type="text" name="usuario" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
             </div>
             <div class="form-group text-center mt-3">
                 <label for="exampleInputPassword1">Senha</label>
-                <input type="password" name="senha" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                <input type="password" name="senha" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Senha">
             </div>
             <div class="text-center">
                 <input type="submit" class="btn btn-light text-center mt-3" name="logaUsuario" value="Entrar">

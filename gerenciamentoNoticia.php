@@ -36,13 +36,35 @@ if (isset($_POST['editaNoticia'])) {
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="inputCodigo">Título</label>
-                        <input type="text" class="form-control" id="inputCodigo" onfocus=" placeholder="Título" name="titulo" required="" value="<?php echo isset($_POST['editaNoticia']) ? $mostraNoticia->titulo_noticia : ""; ?>">  
+                        <input type="text" class="form-control form-control-sm" id="inputCodigo" onfocus placeholder="Título" name="titulo" required="" value="<?php echo isset($_POST['editaNoticia']) ? $mostraNoticia->titulo_noticia : ""; ?>">  
                     </div>
                     <div class="form-group col-md-7">
                         <label for="inputDesc">Resumo</label>
-                        <input type="text" class="form-control" id="inputDesc" name="resumo" required="" placeholder="Resumo da notícia" value="<?php
+                        <input type="text" class="form-control form-control-sm" id="inputDesc" name="resumo" required="" placeholder="Resumo da notícia" value="<?php
                         if (isset($_POST['editaNoticia'])) {
                             echo $mostraNoticia->resumo_noticia;
+                        }
+                        ?>">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="imagem">Foto: </label>
+                        <input type="file" class="form-control text-center form-control-sm border-0" id="imagem" name="imagem">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="">Disponivel de:</label>
+                        <input type="datetime-local" class="form-control form-control-sm"  name="dataEntrada" required value="<?php
+                        if (isset($_POST['editaNoticia'])) {
+                            echo $dataFormatadaEntrada;
+                        }
+                        ?>">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="">Até:</label>
+                        <input type="datetime-local" class="form-control form-control-sm" name="dataSaida" required value="<?php
+                        if (isset($_POST['editaNoticia'])) {
+                            echo $dataFormatadaSaida;
                         }
                         ?>">
                     </div>
@@ -53,28 +75,6 @@ if (isset($_POST['editaNoticia'])) {
                                 echo $mostraNoticia->noticia;
                             }
                             ?></textarea>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="imagem">Foto: </label>
-                        <input type="file" class="form-control border-0" id="imagem" name="imagem">
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label for="">Disponivel de:</label>
-                        <input type="datetime-local" class="form-control"  name="dataEntrada" required value="<?php
-                        if (isset($_POST['editaNoticia'])) {
-                            echo $dataFormatadaEntrada;
-                        }
-                        ?>">
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label for="">Até:</label>
-                        <input type="datetime-local" class="form-control" name="dataSaida" required value="<?php
-                        if (isset($_POST['editaNoticia'])) {
-                            echo $dataFormatadaSaida;
-                        }
-                        ?>">
                     </div>
                 </div>
 

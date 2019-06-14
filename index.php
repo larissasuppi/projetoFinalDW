@@ -1,8 +1,7 @@
 <?php include 'cabecalho.php'; ?>
 
-<!--CONTAINER NOTICIAS E AVISOS-->
 <div class="container-fluid">
-    <!-- DIV CAROUSEL -->
+    <!-- Carrossel com imagens e noticias - ultimas tres noticias -->
     <div class="row">
         <div class="col-md-12">
 
@@ -69,10 +68,9 @@
 
         </div>
     </div>
-    <!-- FIM DIV CAROUSEL -->
     <div class="row">
 
-        <!--DIV NOTICIAS-->
+        <!--Noticias-->
         <div class="col-md-9">
 
             <div class="jumbotron jumbotron-fluid mt-4">
@@ -80,9 +78,9 @@
                     <h2 class="text-center">Últimas Notícias</h2>
                 </div>
             </div>
-            <!--PUXA O ARRAY DE NOTICIAS-->
+            <!--Carregando noticias-->
             <?php
-            if (isset($_SESSION['logado']) && $_SESSION['tipoConta'] == 'nivel1' && $_SESSION['tipoConta'] == 'nivel2') {
+            if (isset($_SESSION['logado']) && $_SESSION['tipoConta'] == 'nivel1') {
                 $rsNoticia = $pdo->prepare("SELECT * from tb_noticia order by id_noticia DESC");
             } else {
                 $rsNoticia = $pdo->prepare("SELECT * FROM tb_noticia WHERE (data_entra <= CURRENT_DATE AND data_sai > CURRENT_DATE) order by id_noticia desc LIMIT 5");
@@ -113,13 +111,13 @@
                         }
                     }
                     ?>
-                    <!--FIM ARRAY NOTICIAS-->
+                   
 
                 </div>
-                <!--FIM DIV NOTICIAS-->
 
 
-                <!--DIV AVISOS-->
+
+                <!--Avisos-->
                 <div class="col-md-3">
                     <div class="jumbotron jumbotron-fluid mt-4">
                         <div class="container">
@@ -127,10 +125,10 @@
                         </div>
                     </div>
 
-                       <!--PUXA O ARRAY DE AVISOS-->
+         <!--Inserindo dados na tela-->
 
             <div class="avisos">
-                <?php
+            <?php
                 if (isset($_SESSION['logado']) && $_SESSION['tipoConta'] == 'nivel1') {
                     $rs2 = $pdo->prepare("SELECT * from tb_avisos order by id_avisos DESC");
                 } else {

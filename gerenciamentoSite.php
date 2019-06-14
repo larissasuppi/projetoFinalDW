@@ -38,42 +38,42 @@ if (isset($_POST['editaUsuario'])) {
 
     </div>
 
-    <!--CRIAR NOVO USUARIO-->
+    <!--Novo usuário e editar usuário-->
     <div class="row cadastro">
         <div class="col-md-12">
 
             <?php if (isset($_POST['editaUsuario'])) { ?>
                 <form class="form-group needs-validation justify-content-center" action="editarUsuario.php" method="POST">
-                <h2 class="text-left mb-3">Editar usuário</h2>
+                    <h2 class="text-left mb-3">Editar usuário</h2>
                 <?php } else { ?>
                     <form class="form-group needs-validation justify-content-center" action="inserirUsuario.php" method="POST">
-                    <h2 class="text-left mb-3">Registrar novo usuário</h2>
+                        <h2 class="text-left mb-3">Registrar novo usuário</h2>
                     <?php } ?>
-                    
+
                     <div class="form-row">
                         <div class="col-md-1">
                             <label for="idUsuario">Código :</label>
-                            <input readonly value="<?php echo $id_usuario; ?>" type="text" name="idUsuario" id="idCliente" class="form-control" arria-describeby="idClienteHelp" placeholder="ID Cliente">
+                            <input readonly value="<?php echo $id_usuario; ?>" type="text" name="idUsuario" id="idCliente" class="form-control form-control-sm" arria-describeby="idClienteHelp" placeholder="ID Cliente">
                             <small id="idClienteHelp" class="form-text text-muted">ID.</small>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="usuario">Usuário: </label>
-                            <input type="text" value="<?php echo $login; ?>" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Seu usuário aqui!">
+                            <input type="text" value="<?php echo $login; ?>" name="usuario" class="form-control form-control-sm" id="usuario" aria-describedby="emailHelp" placeholder="Seu usuário aqui!">
                         </div>
                         <div class="form-group col-md-5">
                             <label for="nomeconta">Nome de Perfil: </label>
-                            <input type="text" value="<?php echo $nome; ?>" name="nome" class="form-control" id="nomeconta" aria-describedby="emailHelp" placeholder="Seu Nome de Perfil!">
+                            <input type="text" value="<?php echo $nome; ?>" name="nome" class="form-control form-control-sm" id="nomeconta" aria-describedby="emailHelp" placeholder="Seu Nome de Perfil!">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="senha">Senha: </label>
-                            <input type="text" name="senha" value="<?php echo $senha; ?>" class="form-control" id="senha" aria-describedby="emailHelp" placeholder="Insira a sua senha">
+                            <input type="text" name="senha" value="<?php echo $senha; ?>" class="form-control form-control-sm" id="senha" aria-describedby="emailHelp" placeholder="Insira a sua senha">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="senha">Tipo da conta: </label>
-                            <select type="select" value="<?php echo $tipo_conta; ?>" class="form-control" name="tipo" placeholder="Tipo de conta" required="">
+                            <select type="select" value="<?php echo $tipo_conta; ?>" class="form-control form-control-sm" name="tipo" placeholder="Tipo de conta" required="">
                                 <option value="nivel1">Administrador</option>
                                 <option value="nivel2">Gerenciador de Noticias</option>
                                 <option value="nivel3">Gerenciador de Avisos</option>
@@ -84,13 +84,12 @@ if (isset($_POST['editaUsuario'])) {
                     <div class="botao text-center">
                         <?php
                         if (isset($_POST['editaUsuario'])) { ?>
-                            <button type='submit' name='editarUsuario' id='editClienteDB' class='btn btn-success btn-block form-control'><i class='fas fa-save'></i> Atualizar</button>
+                            <button type='submit' name='editarUsuario' id='editClienteDB' class='btn btn-success btn-block btn-sm form-control'><i class='fas fa-save'></i> Atualizar</button>
                         <?php } else { ?>
-                            <button type="submit" class="btn btn-primary btn-block mb-3 mt-2" id="botao" name="cadastrarUsuario" class="btn">Cadastrar Usuario</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-sm mb-3 mt-2" id="botao" name="cadastrarUsuario" class="btn">Cadastrar Usuario</button>
                         <?php }
 
                     ?>
-                        <!-- <button type="submit" class="btn btn-primary btn-block mb-3 mt-2" id="botao" name="cadastrarUsuario" class="btn">Cadastrar Usuario</button> -->
                     </div>
 
                 </form>
@@ -149,7 +148,7 @@ if (isset($_POST['editaUsuario'])) {
     </div>
 
 
-    <!--EDITAR DADOS DA EMPRESA-->
+    <!--Dados da empresa-->
 
     <?PHP
     $rs = $pdo->prepare("SELECT * from tb_empresa WHERE id_empresa = 1");
@@ -180,7 +179,7 @@ if (isset($_POST['editaUsuario'])) {
                     <input type="file" class="form-control" name="imagem" value="" required="">
                 </div>
                 <div class="form-group col-md-1">
-                    <?php echo "<img src='{$mostraEmpresa->logo}' width='85' height='85' class=' align-center'>"; ?>
+                <?php echo "<img src='{$mostraEmpresa->logo}' width='85' height='85' class='d-inline-block align-top'>";?>
                 </div>
 
             </div>
