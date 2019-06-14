@@ -25,12 +25,9 @@
                                     <div class="carousel-item active">
                                         <img class="d-block w-100" <?php echo "src='{$mostraNoticia->img_noticia}' widht = '500px' height = '400px'" ?> alt="Primeiro slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <?php echo "<h5>{$mostraNoticia->titulo_noticia}</h5>";
-                                            echo "<p>{$mostraNoticia->resumo_noticia}</p>";
-                                            echo "<form action='detalheNoticia.php' method='get' name='detalhes{$mostraNoticia->id_noticia}'>";
-                                            echo "<input type='hidden' name='idCliente' value='{$mostraNoticia->id_noticia}'>";
-                                            echo "<button class='btn text-center btn-light btn-sm' type='submit'>Mais Detalhes</button>";
-                                            echo "</form>" ?>
+                                        <?php echo "<h4><a href='detalheNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; 
+                                             echo "<p>{$mostraNoticia->resumo_noticia}</p>";
+                                            ?>
                                         </div>
                                         </form>
 
@@ -41,12 +38,9 @@
                                     <div class="carousel-item ">
                                         <img class="d-block w-100 " <?php echo "src='{$mostraNoticia->img_noticia}' widht = '500px' height = '400px'" ?> alt="Primeiro slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                            <?php echo "<h5>{$mostraNoticia->titulo_noticia}</h5>";
-                                            echo "<p>{$mostraNoticia->resumo_noticia}</p>";
-                                            echo "<form action='detalheNoticia.php' method='get' name='detalhes{$mostraNoticia->id_noticia}'>";
-                                            echo "<input type='hidden' name='idCliente' value='{$mostraNoticia->id_noticia}'>";
-                                            echo "<button class='btn text-center btn-light btn-sm' type='submit'>Mais Detalhes</button>";
-                                            echo "</form>" ?>
+                                        <?php echo "<h4><a href='detalheNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; 
+                                             echo "<p>{$mostraNoticia->resumo_noticia}</p>";
+                                            ?>
                                         </div>
                                     </div>
                                 <?php
