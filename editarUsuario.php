@@ -14,7 +14,7 @@
         $stmt->execute($alteraUsuario);
     
         if ($stmt->rowCount() > 0) {
-            header('location: gerenciamentoSite.php');
+            header('location: gerenciarSite.php');
         } else {
             echo "<br><br><br>ERRO novo!!!!!";
         }

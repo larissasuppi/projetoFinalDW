@@ -132,7 +132,7 @@ if (isset($_POST['editaUsuario'])) {
                       </form></td>";
 
 
-                            echo "<td><form action='gerenciamentoSite.php' method='POST' name='editUsuario{$row->id_usuario}'>
+                            echo "<td><form action='gerenciarSite.php' method='POST' name='editUsuario{$row->id_usuario}'>
                       <input type='hidden' name='idUsuario' value='{$row->id_usuario}'>
                       <button class='btn btn-success' type='submit' name='editaUsuario'><i class='far fa-edit'></i></button>
                       </form></td>";

@@ -16,7 +16,7 @@
         $stmt->execute($novo_usuario);
     
         if ($stmt->rowCount() > 0) {
-            include('gerenciamentoSite.php');
+            include('gerenciarSite.php');
         } else {
             echo "<br><br><br>ERRO novo!!!!!";
         }

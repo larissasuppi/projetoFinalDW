@@ -17,7 +17,7 @@
             if (isset($_SESSION['logado'])) {
                 if ($_SESSION['tipoConta'] == 'nivel1' || $_SESSION['tipoConta'] == 'nivel2') {
                     echo '<div class="btn-group">';
-                    echo "<td><form action='gerenciamentoNoticia.php' method='post' name='detalhes{$mostraNoticia->id_noticia}'>
+                    echo "<td><form action='gerenciarNoticia.php' method='post' name='detalhes{$mostraNoticia->id_noticia}'>
             
             <input type='hidden' name='idNoticia' value='{$mostraNoticia->id_noticia}'>";
 

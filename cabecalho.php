@@ -59,13 +59,13 @@
                             <div class="dropdown-menu">
                                 <?php
                                 if ($_SESSION['tipoConta'] == 'nivel1') {
-                                    echo '<a class="dropdown-item" href="gerenciamentoSite.php">Configurações do site</a>';
+                                    echo '<a class="dropdown-item" href="gerenciarSite.php">Configurações do site</a>';
                                 }
                                 if ($_SESSION['tipoConta'] == 'nivel1' || $_SESSION['tipoConta'] == 'nivel2') {
-                                    echo '<a class="dropdown-item" href="gerenciamentoNoticia.php">Gerenciar Noticias</a>';
+                                    echo '<a class="dropdown-item" href="gerenciarNoticia.php">Gerenciar Noticias</a>';
                                 }
                                 if ($_SESSION['tipoConta'] == 'nivel1' || $_SESSION['tipoConta'] == 'nivel3') {
-                                    echo '<a class="dropdown-item" href="gerenciamentoAviso.php">Gerenciar Avisos</a>';
+                                    echo '<a class="dropdown-item" href="gerenciarAviso.php">Gerenciar Avisos</a>';
                                 }
                                 ?>
                             </div>

@@ -11,7 +11,8 @@ a {
 }
 
 .navbar a {
-    color: white;
+    color: blue;
+    ;
 }
 
 a:link {
@@ -33,7 +34,7 @@ body {
 }
 
 .navbar {
-    color: white;
+    color: blue;
 }
 
 .carousel-caption {

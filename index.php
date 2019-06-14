@@ -25,7 +25,7 @@
                                     <div class="carousel-item active">
                                         <img class="d-block w-100" <?php echo "src='{$mostraNoticia->img_noticia}' widht = '500px' height = '400px'" ?> alt="Primeiro slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                        <?php echo "<h4><a href='detalheNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; 
+                                        <?php echo "<h4><a href='telaNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; 
                                              echo "<p>{$mostraNoticia->resumo_noticia}</p>";
                                             ?>
                                         </div>
@@ -38,7 +38,7 @@
                                     <div class="carousel-item ">
                                         <img class="d-block w-100 " <?php echo "src='{$mostraNoticia->img_noticia}' widht = '500px' height = '400px'" ?> alt="Primeiro slide">
                                         <div class="carousel-caption d-none d-md-block">
-                                        <?php echo "<h4><a href='detalheNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; 
+                                        <?php echo "<h4><a href='telaNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; 
                                              echo "<p>{$mostraNoticia->resumo_noticia}</p>";
                                             ?>
                                         </div>
@@ -86,7 +86,7 @@
 
                         <div class="card col-md-12 mr-4 mt-4 mb-4 text-center">
                             <div class="card-body">
-                                <?php echo "<h4><a href='detalheNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; ?>
+                                <?php echo "<h4><a href='telaNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; ?>
                                 <p><?php echo "{$mostraNoticia->resumo_noticia}" ?></p>
                                 <p class=''>
                                     <?php echo date_format(new DateTime($mostraNoticia->data_noticia), 'd/m/Y'); ?>
