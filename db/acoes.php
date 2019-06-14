@@ -151,11 +151,23 @@ if (isset($_POST['alteraEmpresa'])) {
         ':logo' => $encoded_image);
 
     if (empty($_FILES["imagem"]["tmp_name"])) {
+        $alteraEmpresa = array(':id' => 1,
+        ':nome' => $_POST['nome'],
+        ':tel' => $_POST['tel'],
+        ':email' => $_POST['email']);
         $stmt = $pdo->prepare("UPDATE `tb_empresa` SET `nome_empresa`= :nome,`telefone`=:tel,`email`=:email  WHERE id_empresa = :id");
+        $stmt->execute($alteraEmpresa);
     } else {
+        $encoded_image = "data:" . $_FILES['imagem']['type'] . ";base64," . base64_encode(file_get_contents($_FILES['imagem']['tmp_name']));
+        $alteraEmpresa = array(':id' => 1,
+            ':nome' => $_POST['nome'],
+            ':tel' => $_POST['tel'],
+            ':email' => $_POST['email'],
+            ':logo' => $encoded_image);
         $stmt = $pdo->prepare("UPDATE `tb_empresa` SET `nome_empresa`= :nome,`telefone`=:tel,`email`=:email,`logo`=:logo WHERE id_empresa = :id");
+        $stmt->execute($alteraEmpresa);
     }
-    $stmt->execute($alteraEmpresa);
+      
 
     if ($stmt->rowCount() > 0) {
         header('location: ../index.php');

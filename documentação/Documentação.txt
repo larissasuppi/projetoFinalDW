@@ -1,0 +1,38 @@
+Tecnologias utilizadas:
+
+Servidor de base de dados:
+
+Servidor: Localhost via UNIX socket
+Tipo de servidor: MySQL
+Versão do servidor: 5.7.25-0ubuntu0.18.04.2 - (Ubuntu)
+
+Servidor web:
+
+Apache/2.4.29 (Ubuntu)
+versão do PHP: 7.2.15-0ubuntu0.18.04.1
+
+No desenvolvimento, foi utilizado bootstrap v4.1 para o design das telas.
+
+Usuários:
+Nível 1 - Administrador
+login: larissa
+senha: 12345
+
+Nível 2 - Gerenciamento de Notícias
+usuario: luizfelipe
+senha: 12345
+
+Nível 3 - Gerenciamento de Avisos
+usuário: luiz
+senha: 12345
+
+arquivo db/conectaBanco.php
+Local para inserir as configurações do banco
+
+Script do Banco está junto na pasta documentação.
+
+Obs.: A hora de cadastro não está pegando a hora do Brasil ou a hora que está no computador.
+
+Seja do que Deus e o senhor, Tio Lu, quiserem!! 
+Uma bom final de semana!
+

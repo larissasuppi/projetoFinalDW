@@ -176,7 +176,7 @@ if (isset($_POST['editaUsuario'])) {
                 </div>
                 <div class="form-group col-md-5">
                     <p>Logo:</p>
-                    <input type="file" class="form-control" name="imagem" value="" required="">
+                    <input type="file" class="form-control" name="imagem" value="" >
                 </div>
                 <div class="form-group col-md-1">
                 <?php echo "<img src='{$mostraEmpresa->logo}' width='85' height='85' class='d-inline-block align-top'>";?>

@@ -26,8 +26,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between mb-5"  >
             <a class="navbar-brand" href="index.php">
                 <?php
-                echo "<img src='img/logo_info.png' width='30' height='30' class='d-inline-block align-top'>";
-                // echo "<img src='{$empresa->logo}' width='30' height='30' class='d-inline-block align-top mr-2'>";
+                //echo "<img src='img/logo_info.png' width='30' height='30' class='d-inline-block align-top'>";
+                echo "<img src='{$empresa->logo}' width='30' height='30' class='d-inline-block align-top mr-2'>";
                 echo "{$empresa->nome_empresa}";
                 ?>
             </a>
