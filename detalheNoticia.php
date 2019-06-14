@@ -3,9 +3,9 @@
     <div class="row">
         <div class="col-md-12">
             <?php
-            $noticia = array(':idCliente' => $_GET['idCliente']);
+            $noticia = array(':idNoticia' => $_GET['idNoticia']);
 
-            $rs = $pdo->prepare("SELECT * from tb_noticia WHERE id_noticia = :idCliente ");
+            $rs = $pdo->prepare("SELECT * from tb_noticia WHERE id_noticia = :idNoticia ");
             $rs->execute($noticia);
             $mostraNoticia = $rs->fetch(PDO::FETCH_OBJ);
 

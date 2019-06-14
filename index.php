@@ -89,22 +89,17 @@
             if ($rsNoticia->execute()) {
                 if ($rsNoticia->rowCount() > 0) {
                     while ($mostraNoticia = $rsNoticia->fetch(PDO::FETCH_OBJ)) { ?>
+
                         <div class="card col-md-12 mr-4 mt-4 mb-4 text-center">
                             <div class="card-body">
-                                <h4 class="card-title"><?php echo "{$mostraNoticia->titulo_noticia}" ?></h4>
+                            <?php echo "<h4><a href='detalheNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>";?>
                                 <p><?php echo "{$mostraNoticia->resumo_noticia}" ?></p>
                                 <p class=''>
                                     <?php echo date_format(new DateTime($mostraNoticia->data_noticia), 'd/m/Y'); ?>
                                 </p>
                                 
                                 <?php 
-
                                     
-                                echo "<td><form action='detalheNoticia.php' method='get' name='detalhes{$mostraNoticia->id_noticia}'>
-                                    <input type='hidden' name='idCliente' value='{$mostraNoticia->id_noticia}'>
-                                    <button class='btn text-center btn-primary' type='submit'>Mais Detalhes</button>";
-
-                                echo "</form></td>";
                                 echo "</div>";
                                 echo "</div>";
                             }
