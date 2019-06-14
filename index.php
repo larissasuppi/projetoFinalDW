@@ -30,11 +30,11 @@
                                             echo "<form action='detalheNoticia.php' method='get' name='detalhes{$mostraNoticia->id_noticia}'>";
                                             echo "<input type='hidden' name='idCliente' value='{$mostraNoticia->id_noticia}'>";
                                             echo "<button class='btn text-center btn-light btn-sm' type='submit'>Mais Detalhes</button>";
-                                            echo "</form>"?>
+                                            echo "</form>" ?>
                                         </div>
                                         </form>
 
-                                        
+
                                     </div><?php
                                             $controle_ativo = 1;
                                         } else { ?>
@@ -46,7 +46,7 @@
                                             echo "<form action='detalheNoticia.php' method='get' name='detalhes{$mostraNoticia->id_noticia}'>";
                                             echo "<input type='hidden' name='idCliente' value='{$mostraNoticia->id_noticia}'>";
                                             echo "<button class='btn text-center btn-light btn-sm' type='submit'>Mais Detalhes</button>";
-                                            echo "</form>"?>
+                                            echo "</form>" ?>
                                         </div>
                                     </div>
                                 <?php
@@ -92,21 +92,21 @@
 
                         <div class="card col-md-12 mr-4 mt-4 mb-4 text-center">
                             <div class="card-body">
-                            <?php echo "<h4><a href='detalheNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>";?>
+                                <?php echo "<h4><a href='detalheNoticia.php?idNoticia={$mostraNoticia->id_noticia}' class='' >{$mostraNoticia->titulo_noticia}</a></h4>"; ?>
                                 <p><?php echo "{$mostraNoticia->resumo_noticia}" ?></p>
                                 <p class=''>
                                     <?php echo date_format(new DateTime($mostraNoticia->data_noticia), 'd/m/Y'); ?>
                                 </p>
-                                
-                                <?php 
-                                    
+
+                                <?php
+
                                 echo "</div>";
                                 echo "</div>";
                             }
                         }
                     }
                     ?>
-                   
+
 
                 </div>
 
@@ -120,55 +120,53 @@
                         </div>
                     </div>
 
-         <!--Inserindo dados na tela-->
+                    <!--Inserindo dados na tela-->
 
-            <div class="avisos">
-            <?php
-                if (isset($_SESSION['logado']) && $_SESSION['tipoConta'] == 'nivel1') {
-                    $rs2 = $pdo->prepare("SELECT * from tb_avisos order by id_avisos DESC");
-                } else {
-                    $rs2 = $pdo->prepare("SELECT * FROM tb_avisos WHERE (data_entrada <= CURRENT_DATE AND data_saida >= CURRENT_DATE)");
-                }
-
-                if ($rs2->execute()) {
-                    if ($rs2->rowCount() > 0) {
-                        while ($mostraAvisos = $rs2->fetch(PDO::FETCH_OBJ)) {?>
-                            <div class="card col-md-12  mt-4 mb-4 text-center">
-                            <div class="card-body">
-                            <p><?php echo "<h5>{$mostraAvisos->aviso}</h5>" ?></p>
-                            <p> <?php echo "<p>{$mostraAvisos->Criador_Aviso}</p>"?></p>
-                            </div>
-                            
-                            <div class="row">
-                            <?php
-                            if (isset($_SESSION['logado'])) {
-                                if ($_SESSION['tipoConta'] == 'nivel1' || $_SESSION['tipoConta'] == 'nivel3') {
-                                    echo '<div class="col-md-2">';
-                                    echo '</div>';
-                                    echo '<form action="gerenciamentoAviso.php" class="col-md-4 text-center" method="POST">';
-                                    echo "<input type='hidden' name='idAviso' value='{$mostraAvisos->id_avisos}'>";
-                                    echo"<button class='btn btn-success text-center btn-block alterar btn-sm mb-2' type='submit' name='editaAviso'><i class='fas fa-edit'></i>Alterar</button>";
-                                    echo '</form>';
-                                    echo '<form action="db/acoes.php" class="col-md-4 text-center" method="POST">';
-                                    echo "<input type='hidden' name='idAviso' value='{$mostraAvisos->id_avisos}'>";
-                                    echo"<button class='btn btn-danger text-center btn-block btn-sm mb-2' type='submit' name='deletaAviso'><i class='fas fa-edit'></i>Deletar</button>";
-                                    echo '</form>';
-                                    echo '<div class="col-md-2">';
-                                    echo '</div>';
-                                }
-                            }?>
-                            </div>
-                        </div>
+                    <div class="avisos">
                         <?php
+                        if (isset($_SESSION['logado']) && $_SESSION['tipoConta'] == 'nivel1') {
+                            $rs2 = $pdo->prepare("SELECT * from tb_avisos order by id_avisos DESC");
+                        } else {
+                            $rs2 = $pdo->prepare("SELECT * FROM tb_avisos WHERE (data_entrada <= CURRENT_DATE AND data_saida >= CURRENT_DATE)");
+                        }
+
+                        if ($rs2->execute()) {
+                            if ($rs2->rowCount() > 0) {
+                                while ($mostraAvisos = $rs2->fetch(PDO::FETCH_OBJ)) { ?>
+                                    <div class="card col-md-12  mt-4 mb-4 text-center">
+                                        <div class="card-body">
+                                            <p><?php echo "<h5>{$mostraAvisos->aviso}</h5>" ?></p>
+                                            <p> <?php echo "<p>{$mostraAvisos->Criador_Aviso}</p>" ?></p>
+                                        </div>
+
+                                        <div class="row">
+                                            <?php
+                                            if (isset($_SESSION['logado'])) {
+                                                if ($_SESSION['tipoConta'] == 'nivel1' || $_SESSION['tipoConta'] == 'nivel3') {
+                                                    echo '<div class="col-md-2">';
+                                                    echo '</div>';
+                                                    echo '<form action="gerenciamentoAviso.php" class="col-md-4 text-center" method="POST">';
+                                                    echo "<input type='hidden' name='idAviso' value='{$mostraAvisos->id_avisos}'>";
+                                                    echo "<button class='btn btn-success text-center btn-block alterar btn-sm mb-2' type='submit' name='editaAviso'><i class='fas fa-edit'></i>Alterar</button>";
+                                                    echo '</form>';
+                                                    echo '<form action="db/acoes.php" class="col-md-4 text-center" method="POST">';
+                                                    echo "<input type='hidden' name='idAviso' value='{$mostraAvisos->id_avisos}'>";
+                                                    echo "<button class='btn btn-danger text-center btn-block btn-sm mb-2' type='submit' name='deletaAviso'><i class='fas fa-edit'></i>Deletar</button>";
+                                                    echo '</form>';
+                                                    echo '<div class="col-md-2">';
+                                                    echo '</div>';
+                                                }
+                                            } ?>
+                                        </div>
+                                    </div>
+                                <?php
+                            }
                         }
                     }
-                }
-                ?>
-            </div>
-            <!--FIM ARRAY AVISOS-->
+                    ?>
+                    </div>
+
                 </div>
-                <!--FIM DIV AVISOS-->
             </div>
         </div>
-        <!--FIM CONTAINER NOTICIAS E AVISOS-->
         <?php include 'rodape.php'; ?>

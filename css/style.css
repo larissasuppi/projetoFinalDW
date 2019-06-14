@@ -6,6 +6,11 @@
     background-color: #5E5EFF;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 .carousel-inner>img {
     width: 10%;
 }

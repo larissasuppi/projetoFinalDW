@@ -97,6 +97,7 @@ if (isset($_POST['editaUsuario'])) {
         </div>
     </div>
     <div>
+        <!-- Tabela listando usuarios -->
         <table class="table table-sm text-center">
             <thead>
                 <tr>
