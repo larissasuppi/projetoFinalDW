@@ -1,8 +1,7 @@
 <?php
 
 include './conectaBanco.php';
-date_default_timezone_set('America/Sao_Paulo');
-error_reporting(E_ALL);
+
 session_start();
 
 //ACAO PARA SALVAR UMA NOVA NOTICIA
@@ -28,7 +27,6 @@ if (isset($_POST['salvaNoticia'])) {
         header('location: ../index.php');
     } else {
         echo "<br><br><br>ERRO novo!!!!!";
-        echo "<br> Erro tá saindo daqui!!";
     }
 }
 //ACAO PARA DELETAR NOTICIA
@@ -49,49 +47,41 @@ if (isset($_POST['deleteNoticia'])) {
 //ALTERA UMA NOTICIA
 if (isset($_POST['atualizaNoticia'])) {
 
-    if (empty($_FILES["imagem"]["tmp_name"])) {
-
+    if(empty($_FILES["imagem"]["tmp_name"])) {
         $alteraNoticia = array(':id' => $_POST['idNoticia'],
-            ':titulo' => $_POST['titulo'],
-            ':resumo' => $_POST['resumo'],
-            ':noticia' => $_POST['noticia'],
-            ':dataEntrada' => $_POST['dataEntrada'],
-            ':dataSaida' => $_POST['dataSaida']);
-        
-        $stmt = $pdo->prepare("UPDATE `tb_noticia` SET `titulo_noticia`= :titulo,"
-                . "`resumo_noticia`=:resumo,"
-                . "`noticia`=:noticia,"
-                . "`data_entra`=:dataEntrada,"
-                . "`data_sai`=:dataSaida "
-                . " WHERE id_noticia = :id");
-    }else{
+        ':titulo' => $_POST['titulo'],
+        ':resumo' => $_POST['resumo'],
+        ':noticia' => $_POST['noticia'],
+        ':dataEntrada' => $_POST['dataEntrada'],
+        ':dataSaida' => $_POST['dataSaida']);
+    $stmt = $pdo->prepare("UPDATE `tb_noticia` SET `titulo_noticia`= :titulo,"
+            . "`resumo_noticia`=:resumo,"
+            . "`noticia`=:noticia,"
+            . "`data_entra`=:dataEntrada,"
+            . "`data_sai`=:dataSaida "
+            . " WHERE id_noticia = :id");
+    $stmt->execute($alteraNoticia);
+    }else {
         $encoded_image = "data:" . $_FILES['imagem']['type'] . ";base64," . base64_encode(file_get_contents($_FILES['imagem']['tmp_name']));
 
         $alteraNoticia = array(':id' => $_POST['idNoticia'],
-            ':titulo' => $_POST['titulo'],
-            ':resumo' => $_POST['resumo'],
-            ':noticia' => $_POST['noticia'],
-            ':imagem' => $encoded_image,
-            ':dataEntrada' => $_POST['dataEntrada'],
-            ':dataSaida' => $_POST['dataSaida']);
-        
+        ':titulo' => $_POST['titulo'],
+        ':resumo' => $_POST['resumo'],
+        ':noticia' => $_POST['noticia'],
+        ':imagem' => $encoded_image,
+        ':dataEntrada' => $_POST['dataEntrada'],
+        ':dataSaida' => $_POST['dataSaida']);
         $stmt = $pdo->prepare("UPDATE `tb_noticia` SET `titulo_noticia`= :titulo,"
-                . "`resumo_noticia`=:resumo,"
-                . "`noticia`=:noticia,"
-                . "`img_noticia`=:imagem,"
-                . "`data_entra`=:dataEntrada,"
-                . "`data_sai`=:dataSaida "
-                . " WHERE id_noticia = :id");
-    }
-
-    
+            . "`resumo_noticia`=:resumo,"
+            . "`noticia`=:noticia,"
+            . "`img_noticia`=:imagem,"
+            . "`data_entra`=:dataEntrada,"
+            . "`data_sai`=:dataSaida "
+            . " WHERE id_noticia = :id");
     $stmt->execute($alteraNoticia);
-
-    if ($stmt->rowCount() > 0) {
-        header('location: ../index.php');
-    } else {
-        echo "<br><br><br>ERRO novo!!!!!";
     }
+        header('location: ../index.php');
+    
 }
 
 //ACAO PARA SALVAR UM NOVO AVISO
@@ -151,7 +141,6 @@ if (isset($_POST['alteraAviso'])) {
 
 //CADASTRO DE USUARIOS
 if (isset($_POST['cadatrarUsuario'])) {
-   
 
     $novo_usuario = array(
         ':usuario' => $_POST['usuario'],
@@ -159,7 +148,6 @@ if (isset($_POST['cadatrarUsuario'])) {
         ':senha' => $_POST['senha'],
         ':tipo' => $_POST['tipo']
     );
-
     $stmt = $pdo->prepare("INSERT INTO tb_usuario (login,nome,senha,tipo_conta)
         VALUES (:usuario,:nome,:senha,:tipo)");
     $stmt->execute($novo_usuario);
@@ -193,5 +181,23 @@ if (isset($_POST['alteraEmpresa'])) {
         echo "<br><br><br>ERRO novo!!!!!";
     }
 }
-   
+
+//ALTERA UM USUARIO
+if (isset($_POST['alterarUsuario'])) {
+
+    $alteraUsuario = array(':id' => $_POST['idUsuario'],
+        ':login' => $_POST['usuario'],
+        ':nome' => $_POST['nome'],
+        ':senha' => $_POST['senha'],
+        ':tipoConta' => $_POST['tipo']);
+
+    $stmt = $pdo->prepare("UPDATE `tb_usuario` SET `login`= :login,`nome`=:nome,`senha`=:senha,`tipo_conta`=:tipoConta WHERE id_usuario = :id");
+    $stmt->execute($alteraUsuario);
+
+    if ($stmt->rowCount() > 0) {
+        header('location: ../gerenciamentoSite.php');
+    } else {
+        echo "<br><br><br>ERRO novo!!!!!";
+    }
+}
    

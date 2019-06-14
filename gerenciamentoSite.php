@@ -5,6 +5,28 @@ include 'validaLogin.php';
 if ($_SESSION['tipoConta'] != 'nivel1') {
     header('location:index.php');
 }
+
+$id_usuario = '';
+$login = '';
+$senha = '';
+$nome = '';
+$tipo_conta = '';
+
+if (isset($_POST['editaUsuario'])) {
+    $filtro = array('auxId' => $_POST['idUsuario']);
+    $rs = $pdo->prepare("SELECT id_usuario,login,senha,nome,tipo_conta FROM tb_usuario WHERE id_usuario LIKE :auxId");
+    if ($rs->execute($filtro)) {
+        if ($rs->rowCount() > 0) {
+            while ($row = $rs->fetch(PDO::FETCH_OBJ)) {
+                $id_usuario = $row->id_usuario;
+                $login = $row->login;
+                $senha = $row->senha;
+                $nome = $row->nome;
+                $tipo_conta = $row->tipo_conta;
+            }
+        }
+    }
+}
 ?>
 
 <div class="container">
@@ -15,45 +37,117 @@ if ($_SESSION['tipoConta'] != 'nivel1') {
         <br>
 
     </div>
+
     <!--CRIAR NOVO USUARIO-->
     <div class="row cadastro">
         <div class="col-md-12">
-            <form class="form-group needs-validation justify-content-center" action="db/acoes.php" method="post">
-                <h2 class="text-left mb-3">Registrar novo usuario</h2>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="usuario">Usuário: </label>
-                        <input type="text" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Seu usuário aqui!">
+            <?php if (isset($_POST['editaUsuario'])) { ?>
+                <form class="form-group needs-validation justify-content-center" action="editarUsuario.php" method="POST">
+                <h2 class="text-left mb-3">Editar usuário</h2>
+                <?php } else { ?>
+                    <form class="form-group needs-validation justify-content-center" action="inserirUsuario.php" method="POST">
+                    <h2 class="text-left mb-3">Registrar novo usuário</h2>
+                    <?php } ?>
+                    
+                    <div class="form-row">
+                        <div class="col-md-1">
+                            <label for="idUsuario">Código :</label>
+                            <input readonly value="<?php echo $id_usuario; ?>" type="text" name="idUsuario" id="idCliente" class="form-control" arria-describeby="idClienteHelp" placeholder="ID Cliente">
+                            <small id="idClienteHelp" class="form-text text-muted">ID.</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="usuario">Usuário: </label>
+                            <input type="text" value="<?php echo $login; ?>" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Seu usuário aqui!">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="nomeconta">Nome de Perfil: </label>
+                            <input type="text" value="<?php echo $nome; ?>" name="nome" class="form-control" id="nomeconta" aria-describedby="emailHelp" placeholder="Seu Nome de Perfil!">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="nomeconta">Nome de Perfil: </label>
-                        <input type="text" name="nome" class="form-control" id="nomeconta" aria-describedby="emailHelp" placeholder="Seu Nome de Perfil!">
-                    </div>
-                </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="senha">Senha: </label>
-                        <input type="text" name="senha" class="form-control" id="senha" aria-describedby="emailHelp" placeholder="Insira a sua senha">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="senha">Senha: </label>
+                            <input type="text" name="senha" value="<?php echo $senha; ?>" class="form-control" id="senha" aria-describedby="emailHelp" placeholder="Insira a sua senha">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="senha">Tipo da conta: </label>
+                            <select type="select" value="<?php echo $tipo_conta; ?>" class="form-control" name="tipo" placeholder="Tipo de conta" required="">
+                                <option value="nivel1">Administrador</option>
+                                <option value="nivel2">Gerenciador de Noticias</option>
+                                <option value="nivel3">Gerenciador de Avisos</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="senha">Tipo da conta: </label>
-                        <select type="select" class="form-control" name="tipo" placeholder="Tipo de conta" required="">
-                            <option value="nivel1">Administrador</option>
-                            <option value="nivel2">Gerenciador de Noticias</option>
-                            <option value="nivel3">Gerenciador de Avisos</option>
-                        </select>
+
+                    <div class="botao text-center">
+                        <?php
+                        if (isset($_POST['editaUsuario'])) { ?>
+                            <button type='submit' name='editarUsuario' id='editClienteDB' class='btn btn-success btn-block form-control'><i class='fas fa-save'></i> Atualizar</button>
+                        <?php } else { ?>
+                            <button type="submit" class="btn btn-primary btn-block mb-3 mt-2" id="botao" name="cadastrarUsuario" class="btn">Cadastrar Usuario</button>
+                        <?php }
+
+                    ?>
+                        <!-- <button type="submit" class="btn btn-primary btn-block mb-3 mt-2" id="botao" name="cadastrarUsuario" class="btn">Cadastrar Usuario</button> -->
                     </div>
-                </div>
 
-                <div class="botao text-center">
-                    <button type="submit" class="btn btn-primary btn-block mb-3 mt-2" id="botao" name="cadatrarUsuario" class="btn">Cadastrar Usuario</button>
-                </div>
+                </form>
 
-            </form>
         </div>
     </div>
+    <div>
+        <table class="table table-sm text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Login</th>
+                    <th scope="col">Senha</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Tipo_Conta</th>
+                    <th scope="col"><button type="submit" class="btn btn-light" disabled><i class="far fa-trash-alt"></i></button></th>
+                    <th scope="col"><button type="submit" class="btn btn-light" disabled><i class="far fa-edit"></i></button></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                //busca os usuários
+                $filtro = array('auxNome' => '%%');
+                $rs = $pdo->prepare("SELECT id_usuario,login,senha,nome, tipo_conta
+                  FROM tb_usuario WHERE nome LIKE :auxNome");
+                if ($rs->execute($filtro)) {
+                    if ($rs->rowCount() > 0) {
+                        while ($row = $rs->fetch(PDO::FETCH_OBJ)) {
+                            echo "<tr>";
+                            echo "<th scope='row'>{$row->id_usuario}</td>";
+                            echo "<td>{$row->login}</td>";
+                            echo "<td>{$row->senha}</td>";
+                            echo "<td>{$row->nome}</td>";
+                            echo "<td>{$row->tipo_conta}</td>";
+
+                            echo "<td><form action='deletarUsuario.php' method='POST' name='delUsuario{$row->id_usuario}'>
+                      <input type='hidden' name='idUsuario' value='{$row->id_usuario}'>
+                      <button class='btn btn-danger' type='submit' name='deletaUsuario'><i class='far fa-trash-alt'></i></button>
+                      </form></td>";
+
+
+                            echo "<td><form action='gerenciamentoSite.php' method='POST' name='editUsuario{$row->id_usuario}'>
+                      <input type='hidden' name='idUsuario' value='{$row->id_usuario}'>
+                      <button class='btn btn-success' type='submit' name='editaUsuario'><i class='far fa-edit'></i></button>
+                      </form></td>";
+                            echo "</tr>";
+                        }
+                    }
+                }
+
+                echo "</tbody>";
+                ?>
+
+            </tbody>
+        </table>
+    </div>
+
 
     <!--EDITAR DADOS DA EMPRESA-->
 

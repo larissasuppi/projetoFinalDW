@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap/css/estilos.css">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
         <title>Informática Suppi</title>
         <link rel="shortcut icon" href="img/logo_info.png" />
 
@@ -22,6 +23,7 @@
         ?>
 
         <!--        CABEÇALHO-->
+        
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-between mb-5"  >
             <a class="navbar-brand" href="index.php">
                 <?php
@@ -44,7 +46,7 @@
                 <?php
                 if (!isset($_SESSION['logado'])) {
                     echo('<form class="form-inline" action="login.php">
-                            <button class="btn btn-light" type="submit">Logar-se</button>
+                            <button class="btn btn-light" type="submit">Login</button>
                          </form>');
                 } else {
                     ?>
@@ -54,7 +56,7 @@
                                 <img src="img/user.png" width='30' height='30' class="d-inline-block align-top mr-2" alt="">
 
                                 <?php echo $_SESSION['nomeUser']; ?></a>
-                            <div class="dropdown-menu">
+                                <div class="dropdown-menu">
                                 <?php
                                 if ($_SESSION['tipoConta'] == 'nivel1') {
                                     echo '<a class="dropdown-item" href="gerenciamentoSite.php">Configurações do site</a>';
@@ -72,6 +74,7 @@
                         echo('<form class="form-inline" action="logoff.php">
                             <button class="btn btn-light" type="submit">Sair</button>
                          </form>');
+                         
                     }
                     ?>
                 </ul>
